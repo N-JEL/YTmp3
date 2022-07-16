@@ -88,7 +88,6 @@ def get_mp3(yt_url):
                 ydl.download([video_info['webpage_url']])
             except Exception:
                 print(traceback.format_exc())
-                pass
         else:
             global equivalent_mp3_counter
             equivalent_mp3_counter += 1
@@ -109,7 +108,7 @@ def main():
                         url_set.add(line)
         else:
             print("WARNING - Your links file is empty, hence not containing any link to convert")
-    except:
+    except FileNotFoundError:
         print(traceback.format_exc() + "^^^^ Please create a file to store your YT links (DEFAULT = \"" + DEFAULT_LINKS_FILE_NAME + "\")")
 
     for url in url_set:
